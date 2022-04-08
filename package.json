@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@nichoth/base64pad": "^0.0.0",
+    "@noble/ed25519": "^1.6.0"
+  }
+}
