@@ -1,6 +1,37 @@
 {
+  "scripts": {
+    "start": "npm run build-example && npm run serve",
+    "build-example": "mkdir -p public && browserify -p esmify -dv example/index.js > example/bundle.js",
+    "serve": "budo example/index.js:bundle.js --dir=example/ --live --pushstate --open -- -p esmify -dv"
+  },
   "dependencies": {
     "@nichoth/base64pad": "^0.0.0",
     "@noble/ed25519": "^1.6.0"
-  }
+  },
+  "devDependencies": {
+    "browserify": "^17.0.0",
+    "budo": "^11.7.0",
+    "esmify": "^2.1.1"
+  },
+  "name": "ssc-keys",
+  "description": "Key operations for web browsers",
+  "version": "0.0.0",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nichoth/ssc-keys.git"
+  },
+  "keywords": [
+    "ssc",
+    "keys"
+  ],
+  "author": "nichoth",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nichoth/ssc-keys/issues"
+  },
+  "homepage": "https://github.com/nichoth/ssc-keys#readme"
 }
