@@ -23,7 +23,8 @@
   "scripts": {
     "start": "npm run build-example && npm run serve",
     "build-example": "mkdir -p public && browserify -p esmify -dv example/index.js > example/bundle.js",
-    "serve": "budo example/index.js:bundle.js --dir=example/ --live --pushstate --open -- -p esmify -dv"
+    "serve": "budo example/index.js:bundle.js --dir=example/ --live --pushstate --open -- -p esmify -dv",
+    "postversion": "git push && git push --tags && npm publish"
   },
   "dependencies": {
     "@nichoth/base64pad": "^0.0.0",
