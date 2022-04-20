@@ -11,7 +11,8 @@ npm i ssc-keys
 ## example
 
 ```js
-import { create, exportPrivateKey, fromExportedKey, sign } from 'ssc-keys'
+import { create, exportPrivateKey, fromExportedKey, sign,
+    verify } from 'ssc-keys'
 
 create().then(keypair => {
     console.log('**kp**', keypair)
@@ -32,6 +33,11 @@ create().then(keypair => {
                 .then(sig => {
                     console.log('*the sig*', sig)
                     // => *the sig* Y42/20g10a7li1tCqkAqFT55Tr/3THuCVrVn1RzJ7OvdYBq8RvbdGlvbNaYq9xkAQjVndRKFeGv/HaYPQtJeAg==
+
+                    verify(sig, msg, keypair.publicKey).then(isValid => {
+                        console.log('*is valid*', isValid)
+                        // => *is valid* true
+                    })
                 })
         })
 })

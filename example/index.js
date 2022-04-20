@@ -1,4 +1,5 @@
-import { create, exportPrivateKey, fromExportedKey, sign } from '../'
+import { create, exportPrivateKey, fromExportedKey, sign,
+    verify } from '../'
 
 
 
@@ -29,9 +30,15 @@ create().then(kp => {
 
     fromExportedKey(exported)
         .then(keypair => {
-            sign('a test message', keypair.privateKey)
+            const msg = 'a test message'
+
+            sign(msg, keypair.privateKey)
                 .then(sig => {
                     console.log('*the sig*', sig)
+
+                    verify(sig, msg, keypair.publicKey).then(isValid => {
+                        console.log('*is valid*', isValid)
+                    })
                 })
         })
 })

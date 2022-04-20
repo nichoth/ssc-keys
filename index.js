@@ -20,15 +20,24 @@ export function exportPrivateKey (kp) {
 /**
    * Create a signature of `msg` using the private signing key.
    *
-   * @param {Uint8Array} msg - a message to sign
-   * @returns {Promise<Uint8Array>} a Promise that resolves to the signature
-   * (as a Uint8Array)
+   * @param {String} msg - a message to sign
+   * @returns {Promise<base64 string>} a Promise that resolves to the signature
+   * (as a base64 string)
  */
 export function sign (msg, privateKey) {
     return ed.sign(fromString(msg), privateKey)
         .then(sig => {
+            // sig here is a uint8array
             return base64Pad.encode(sig)
         })
+}
+
+// sig -- base64 string
+// msg -- string
+// pubKey -- uint8array
+export function verify (sig, msg, pubKey) {
+    const _sig = base64Pad.decode(sig)
+    return ed.verify(_sig, fromString(msg), pubKey)
 }
 
 /**
