@@ -28,17 +28,15 @@ create().then(kp => {
     const exported = exportPrivateKey(kp)
     console.log('*exported private key*', exported)
 
-    fromExportedKey(exported)
-        .then(keypair => {
-            const msg = 'a test message'
+    fromExportedKey(exported).then(keypair => {
+        const msg = 'a test message'
 
-            sign(msg, keypair.privateKey)
-                .then(sig => {
-                    console.log('*the sig*', sig)
+        sign(msg, keypair.privateKey).then(sig => {
+            console.log('*the sig*', sig)
 
-                    verify(sig, msg, keypair.publicKey).then(isValid => {
-                        console.log('*is valid*', isValid)
-                    })
-                })
+            verify(sig, msg, keypair.publicKey).then(isValid => {
+                console.log('*is valid*', isValid)
+            })
         })
+    })
 })
