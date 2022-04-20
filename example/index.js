@@ -1,4 +1,25 @@
-import { create, exportPrivateKey, fromExportedKey } from '../'
+import { create, exportPrivateKey, fromExportedKey, sign } from '../'
+
+
+
+// ------------------------- trying new things -----------------
+
+import { webcrypto } from "one-webcrypto"
+
+// webcrypto.subtle.generateKey()
+webcrypto.subtle.generateKey({
+    name: 'ECDSA',
+    namedCurve: 'P-256'
+}, false /* extactable */, ['sign', 'verify'])
+    .then(keypair => {
+        console.log('*got things*', keypair)
+    })
+
+
+// --------------------------- /trying new things -----------------
+
+
+
 
 create().then(kp => {
     console.log('**kp**', kp)
@@ -8,7 +29,9 @@ create().then(kp => {
 
     fromExportedKey(exported)
         .then(keypair => {
-            console.log('got a keypair', keypair)
+            sign('a test message', keypair.privateKey)
+                .then(sig => {
+                    console.log('*the sig*', sig)
+                })
         })
 })
-
