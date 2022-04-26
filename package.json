@@ -3,6 +3,7 @@
   "description": "Key operations for web browsers",
   "version": "0.0.2",
   "main": "index.js",
+  "type": "module",
   "directories": {
     "example": "example"
   },
