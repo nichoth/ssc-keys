@@ -28,7 +28,7 @@
     "postversion": "git push && git push --tags && npm publish"
   },
   "dependencies": {
-    "@nichoth/base64pad": "^0.0.0",
+    "@nichoth/base64pad": "^0.0.1",
     "@noble/ed25519": "^1.6.0",
     "one-webcrypto": "^1.0.3",
     "uint8arrays": "^3.0.0"
