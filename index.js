@@ -22,7 +22,6 @@ function exportKeys (keypair) {
         webcrypto.subtle.exportKey('pkcs8', keypair.privateKey)
     ])
         .then(([pub, priv]) => {
-            console.log('pub, priv', pub, priv)
             return {
                 publicKey: utils.arrBufToBase64(pub),
                 privateKey: utils.arrBufToBase64(priv)
