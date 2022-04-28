@@ -30,6 +30,7 @@
   "dependencies": {
     "@nichoth/base64pad": "^0.0.1",
     "@noble/ed25519": "^1.6.0",
+    "keystore-idb": "^0.15.5",
     "one-webcrypto": "^1.0.3",
     "uint8arrays": "^3.0.0"
   },
