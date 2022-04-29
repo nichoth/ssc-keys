@@ -1,7 +1,7 @@
 {
   "name": "ssc-keys",
   "description": "Key operations for web browsers",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "main": "index.js",
   "type": "module",
   "directories": {
